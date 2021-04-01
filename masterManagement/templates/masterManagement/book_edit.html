@@ -1,0 +1,22 @@
+{% extends "masterManagement/base.html" %}
+{% load django_bootstrap5 %}
+
+{% block title %}書籍の編集{% endblock title %}
+
+{% block content %}
+    <h4 class="mt-4 mb-5 border-bottom">書籍の編集</h4>
+    {% if book_id %}
+    <form action="{% url 'masterManagement:book_mod' book_id=book_id %}" method="post">
+    {% else %}
+    <form action="{% url 'masterManagement:book_add' %}" method="post">
+    {% endif %}
+      {% csrf_token %}
+      {% bootstrap_form form layout='horizontal' %}
+      <div class="form-group row">
+        <div class="col-md-9">
+          <button type="submit" class="btn btn-primary">送信</button>
+        </div>
+      </div>
+    </form>
+    <a href="{% url 'masterManagement:book_list' %}" class="btn btn-secondary btn-sm mt-3">戻る</a>
+{% endblock content %}
