@@ -17,4 +17,5 @@ jobs:
       run: 
         echo "$SSH_SECRET_KEY" > secret_key
         chmod 600 secret_key
-        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/django-reading-record && git pull origin master"
+        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key
+        cd ~/django-reading-record && git pull origin main
